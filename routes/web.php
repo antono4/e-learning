@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
+use App\Models\Lesson;
+use App\Models\Question;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('hello');
+    return view('hello', [
+        'lessons'   => Lesson::all(),
+        'questions' => Question::latest()->get()
+    ]);
 });
+
+Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
