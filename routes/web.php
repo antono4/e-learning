@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\QuestionController;
 use App\Models\Lesson;
 use App\Models\Question;
@@ -24,3 +25,10 @@ Route::get('/', function () {
 });
 
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
+
+Route::get('/teacher/login', [LoginController::class, 'index'])->name('teacher.login');
+Route::post('/teacher/login', [LoginController::class, 'authenticate'])->name('teacher.authenticate');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

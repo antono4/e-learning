@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            LessonSeeder::class
+            LessonSeeder::class,
+            TeacherSeeder::class
         ]);
 
         Question::factory(20)->create();
