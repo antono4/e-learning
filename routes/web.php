@@ -19,15 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('hello', [
-        'lessons'   => Lesson::all(),
+        'lessons'   => Lesson::whereUserId(auth()->user()->id)->get(),
         'questions' => Question::latest()->get()
     ]);
 });
 
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
 
-Route::get('/teacher/login', [LoginController::class, 'index'])->name('teacher.login');
-Route::post('/teacher/login', [LoginController::class, 'authenticate'])->name('teacher.authenticate');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

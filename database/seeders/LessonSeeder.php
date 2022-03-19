@@ -16,15 +16,15 @@ class LessonSeeder extends Seeder
     public function run()
     {
         Lesson::insert([
-            [ 'name' => 'Matematika' ],
-            [ 'name' => 'Bahasa Indonesia' ],
-            [ 'name' => 'Bahasa Inggris' ],
-            [ 'name' => 'Ilmu Pengetahuan Alam' ],
-            [ 'name' => 'Kimia' ],
-            [ 'name' => 'Fisika' ],
-            [ 'name' => 'Pendidikan Agama Islam' ],
-            [ 'name' => 'Pendidikan Kewarganegaraan' ],
-            [ 'name' => 'Ilmu Pengetahuan Sosial' ],
+            [ 'name' => 'Matematika', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Bahasa Indonesia', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Bahasa Inggris', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Ilmu Pengetahuan Alam', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Kimia', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Fisika', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Pendidikan Agama Islam', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Pendidikan Kewarganegaraan', 'user_id' => rand(1,4) ],
+            [ 'name' => 'Ilmu Pengetahuan Sosial', 'user_id' => rand(1,4) ],
         ]);
     }
 }

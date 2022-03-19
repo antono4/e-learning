@@ -35,7 +35,6 @@
             <textarea name="correct" id="correct" class="border"></textarea>
             <button>submit</button>
         </form>
-
         <table>
             <tr>
                 <td>No</td>

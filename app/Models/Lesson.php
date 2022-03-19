@@ -12,4 +12,8 @@ class Lesson extends Model
     public function Question(){
         return $this->hasMany(Question::class);
     }
+
+    public function User(){
+        return $this->hasMany(User::class);
+    }
 }
