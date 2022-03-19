@@ -13,6 +13,7 @@
             @csrf
             <label for="question">Soal</label>
             <textarea name="question" id="question" class="border"></textarea>
+            <br>    
             <label for="lesson">Pelajaran</label>
             <select name="lesson" id="lesson">
                 @forelse ($lessons as $lesson)
@@ -21,16 +22,22 @@
                     
                 @endforelse
             </select>
+            <br>
             <label for="a">a</label>
             <textarea name="a" id="a" class="border"></textarea>
+            <br>
             <label for="b">b</label>
             <textarea name="b" id="b" class="border"></textarea>
+            <br>
             <label for="c">c</label>
             <textarea name="c" id="c" class="border"></textarea>
+            <br>
             <label for="d">d</label>
             <textarea name="d" id="d" class="border"></textarea>
+            <br>
             <label for="e">e</label>
             <textarea name="e" id="e" class="border"></textarea>
+            <br>
             <label for="correct">correct</label>
             <textarea name="correct" id="correct" class="border"></textarea>
             <button>submit</button>
