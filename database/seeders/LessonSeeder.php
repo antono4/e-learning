@@ -16,15 +16,51 @@ class LessonSeeder extends Seeder
     public function run()
     {
         Lesson::insert([
-            [ 'name' => 'Matematika', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Bahasa Indonesia', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Bahasa Inggris', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Ilmu Pengetahuan Alam', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Kimia', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Fisika', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Pendidikan Agama Islam', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Pendidikan Kewarganegaraan', 'user_id' => rand(1,4) ],
-            [ 'name' => 'Ilmu Pengetahuan Sosial', 'user_id' => rand(1,4) ],
+            [ 
+                'name' => 'Matematika', 
+                'slug' => 'matematika',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Bahasa Indonesia', 
+                'slug' => 'bahasa-indonesia',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Bahasa Inggris', 
+                'slug' => 'bahasa-inggris',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Ilmu Pengetahuan Alam', 
+                'slug' => 'ilmu-pengetahuan-alam',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Kimia',
+                'slug' => 'kimia', 
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Fisika', 
+                'slug' => 'fisika',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Pendidikan Agama Islam', 
+                'slug' => 'pendidikan-agama-islam',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Pendidikan Kewarganegaraan', 
+                'slug' => 'pendidikan-kewarganegaraan',
+                'user_id' => rand(1,4) 
+            ],
+            [ 
+                'name' => 'Ilmu Pengetahuan Sosial', 
+                'slug' => 'ilmu=pengetahuan-sosial',
+                'user_id' => rand(1,4) 
+            ],
         ]);
     }
 }

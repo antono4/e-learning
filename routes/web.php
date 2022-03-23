@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Livewire\AddQuestion;
 use App\Http\Livewire\Lessons;
+use App\Http\Livewire\ShowLesson;
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,10 @@ Route::get('/', function () {
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
 
 Route::get('/lessons', Lessons::class);
-Route::get('/addquestion', AddQuestion::class);
+Route::get('/lessons/{slug}', ShowLesson::class)->name('show.lesson');
+
+
+Route::get('/addquestion', AddQuestion::class)->name('add.question');
 
 
 
