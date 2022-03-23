@@ -15,7 +15,7 @@
     <br><br><br>
     
     
-    <div class="container mx-auto">
+    <div class="container mx-auto pb-10">
         <header class="mb-16">
             <h1 class="text-2xl font-bold tracking-wide">Soal No. {{ $no }}</h1>
             @if ($optionLesson)
@@ -144,8 +144,8 @@
                     </div>
                     {{-- div reset kolom --}} <div></div>
                     {{-- div reset kolom --}} <div></div>
-                    <div>
-                        <button wire:click="hideElements" class="text-white bg-indigo-500 hiver:bg-indigo-400 px-5 py-1 rounded-md">submit</button>
+                    <div class="flex justify-end">
+                        <button wire:click="hideElements" class="text-white bg-indigo-500 hover:bg-indigo-400 px-10 py-2 rounded-md">Submit</button>
                     </div>
                 </div>
             </form>

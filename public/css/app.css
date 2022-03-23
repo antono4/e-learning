@@ -1089,6 +1089,12 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .block {
   display: block;
 }
@@ -1139,6 +1145,15 @@ select {
 }
 .h-28 {
   height: 7rem;
+}
+.h-24 {
+  height: 6rem;
+}
+.h-32 {
+  height: 8rem;
+}
+.h-40 {
+  height: 10rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -1257,6 +1272,9 @@ select {
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 .flex-row {
   flex-direction: row;
 }
@@ -1295,6 +1313,9 @@ select {
 }
 .gap-10 {
   gap: 2.5rem;
+}
+.gap-5 {
+  gap: 1.25rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1482,6 +1503,9 @@ select {
 .p-20 {
   padding: 5rem;
 }
+.p-5 {
+  padding: 1.25rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1546,6 +1570,10 @@ select {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1578,6 +1606,9 @@ select {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 .text-left {
   text-align: left;
@@ -1847,6 +1878,10 @@ select {
 .hover\:bg-emerald-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(52 211 153 / var(--tw-bg-opacity));
+}
+.hover\:bg-indigo-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
