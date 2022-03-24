@@ -143,4 +143,13 @@ return [
         ]),
     ],
 
+    'redirects' => [
+        'login' => 'pp',
+        'logout' => 'pp',
+        'password-confirmation' => null,
+        'register' => 'dashboard',
+        'email-verification' => null,
+        'password-reset' => null,
+    ],
+
 ];
