@@ -56,7 +56,7 @@
                     <h1>Navigation</h1>
                     <div class="flex">
                         @for ($i=0; $i <= $index; $i++)
-                            <div class="bg-red-500 px-2 py-1 mx-2 rounded text-white flex-wrap">{{$i+1}}</div>
+                            <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap">{{$i+1}}</div>
                         @endfor
                     </ul>
                 </div>

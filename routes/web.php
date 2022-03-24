@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
 
-Route::get('/lessons', Lessons::class);
+Route::get('/lessons', Lessons::class)->name('index.lesson');
 Route::get('/lessons/{slug}', ShowLesson::class)->name('show.lesson');
 
 
