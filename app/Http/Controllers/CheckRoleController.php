@@ -19,7 +19,7 @@ class CheckRoleController extends Controller
         } elseif(auth()->user()->hasRole('teacher')){
             return redirect()->route('teacher.dashboard');
         } elseif(auth()->user()->hasRole('student')){
-            return 'murid';
+            return redirect()->route('student.dashboard');;
         } else{
             return abort(404);
         }
