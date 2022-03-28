@@ -58,7 +58,11 @@
                         @for ($i=0; $i <= $index; $i++)
                             <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap">{{$i+1}}</div>
                         @endfor
-                    </ul>
+                    </div>
+                    <h2 class="block">Finalisasi</h2>
+                    <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="finalisasi()">
+                        Finalisasi
+                    </button>
                 </div>
             </div>
         @else
