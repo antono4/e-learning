@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CheckRoleController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Livewire\Teacher\{ AddQuestion,  Lessons, ShowLesson};
+use App\Http\Livewire\Teacher\{ AddQuestion, Dashboard, Lessons, ShowLesson};
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +24,14 @@ Route::get('/', function () {
         'questions' => Question::latest()->get()
     ]);
 });
+Route::get('/checkrole', CheckRoleController::class);
 
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
 
 
 // teacher route group
 Route::prefix('teacher')->group(function () {
+    Route::get('/dashboard', Dashboard::class)->name('teacher.dashboard');
     // teacher Lesson Group Route
     Route::prefix('lessons')->name('lesson.')->group(function(){
         Route::get('/', Lessons::class)->name('index');

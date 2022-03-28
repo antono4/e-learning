@@ -144,7 +144,7 @@ return [
     ],
 
     'redirects' => [
-        'login' => 'dashboard',
+        'login' => 'checkrole',
         'logout' => 'home',
         'password-confirmation' => null,
         'register' => 'dashboard',

@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LessonSeeder::class,
             TeacherSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            RoleSeeder::class
         ]);
 
         Question::factory(20)->create();
