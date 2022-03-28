@@ -144,8 +144,8 @@ return [
     ],
 
     'redirects' => [
-        'login' => 'pp',
-        'logout' => 'pp',
+        'login' => 'dashboard',
+        'logout' => 'home',
         'password-confirmation' => null,
         'register' => 'dashboard',
         'email-verification' => null,

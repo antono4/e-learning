@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Livewire\AddQuestion;
-use App\Http\Livewire\Lessons;
-use App\Http\Livewire\ShowLesson;
+use App\Http\Livewire\Teacher\{ AddQuestion,  Lessons, ShowLesson};
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +27,17 @@ Route::get('/', function () {
 
 Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
 
-Route::get('/lessons', Lessons::class)->name('index.lesson');
-Route::get('/lessons/{slug}', ShowLesson::class)->name('show.lesson');
 
+// teacher route group
+Route::prefix('teacher')->group(function () {
+    // teacher Lesson Group Route
+    Route::prefix('lessons')->name('lesson.')->group(function(){
+        Route::get('/', Lessons::class)->name('index');
+        Route::get('/{slug}', ShowLesson::class)->name('show');
+    });
 
-Route::get('/addquestion', AddQuestion::class)->name('add.question');
+    Route::get('/addquestion', AddQuestion::class)->name('add.question');
+});
 
 
 

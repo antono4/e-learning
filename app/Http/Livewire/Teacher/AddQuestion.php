@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Teacher;
 
 use App\Models\Lesson;
 use App\Models\Question;
@@ -11,7 +11,7 @@ class AddQuestion extends Component
     public $no= 1;
     public function render()
     {
-        return view('livewire.add-question', [
+        return view('livewire.teacher.add-question', [
             'lessons'           => Lesson::whereUserId(auth()->user()->id)->get(),
             'selectedLesson'    => Lesson::whereId($this->optionLesson)->first()
         ]);

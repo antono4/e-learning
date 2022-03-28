@@ -10,8 +10,8 @@
     Dashboard
 </a>
 
-<a href="{{ route('index.lesson') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition
-    @if (request()->is('lessons*'))
+<a href="{{ route('lesson.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition
+    @if (request()->is('teacher/lessons*'))
         border-indigo-400
         hover:border-indigo-300
     @else
@@ -23,7 +23,7 @@
 </a>
 
 <a href="{{ route('add.question') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition
-    @if (request()->is('addquestion*'))
+    @if (request()->is('teacher/addquestion*'))
         border-indigo-400
         hover:border-indigo-300
     @else

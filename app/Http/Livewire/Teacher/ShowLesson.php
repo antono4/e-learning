@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Teacher;
 
 use App\Models\Lesson;
 use App\Models\Question;
@@ -16,7 +16,7 @@ class ShowLesson extends Component
     }
     public function render()
     {
-        return view('livewire.show-lesson', [
+        return view('livewire.teacher.show-lesson', [
             'questions' => $this->questions
         ]);
     }
