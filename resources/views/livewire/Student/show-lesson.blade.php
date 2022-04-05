@@ -13,6 +13,7 @@
                                             type="radio" 
                                             name="answer{{$question->id}}" 
                                             id="{{$question->id}}-{{$question->a}}" 
+                                            wire:model="answer"
                                             value="{{$question->a}}"
                                             class="mr-2
 
@@ -38,7 +39,13 @@
                                 </ul>
                             </div>
                         </div>
+                        
+                        <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="submitAnswer({{$question->id}})">
+                            Berikutnya
+                        </button>
                     @endforeach
+
+
                 </div>
                 <div>
                     <h1>Navigation</h1>
