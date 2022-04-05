@@ -66,7 +66,7 @@ class LessonSeeder extends Seeder
             ],
             [ 
                 'name' => 'Ilmu Pengetahuan Sosial', 
-                'slug' => 'ilmu=pengetahuan-sosial',
+                'slug' => 'ilmu-pengetahuan-sosial',
                 'user_id' => rand(1,4),
                 'status' => 'finished' 
             ],

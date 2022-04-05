@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Lesson::class);
+            $table->integer('page');
             $table->text('question');
             $table->text('a');
             $table->text('b');

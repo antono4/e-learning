@@ -27,13 +27,14 @@ Route::get('/', function () {
 });
 Route::get('/checkrole', CheckRoleController::class);
 
-Route::post('/', [QuestionController::class, 'store'])->name('lesson.store');
+
 
 
 // student route group
 Route::prefix('student')->group(function () {
     Route::get('/dashboard', StudentDashboard::class)->name('student.dashboard');
-    Route::get('/lessons/{slug}', StudentShowLesson::class)->name('student.lesson.show');
+    // Route::get('/lessons/{slug}/', StudentShowLesson::class)->name('student.lesson.show');
+    Route::get('/lessons/{slug}/{page}', StudentShowLesson::class)->name('student.lesson.show');
 });
 
 // teacher route group

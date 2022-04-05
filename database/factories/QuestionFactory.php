@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Lesson;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class QuestionFactory extends Factory
     {
         return [
             'lesson_id'         => rand(1,9),
+            'page'              => 1,
             'question'          => $this->faker->sentence(2),
             'a'                 => $this->faker->word(),
             'b'                 => $this->faker->word(),

@@ -8,10 +8,10 @@ use Livewire\Component;
 
 class ShowLesson extends Component
 {
-    public $questions, $answer= [];
-    public function mount($slug){
+    public $questions;
+    public function mount($slug, $page){
         $lesson = Lesson::whereSlug($slug)->first();
-        $this->questions= Question::whereLessonId($lesson->id)->get();
+        $this->questions= Question::whereLessonId($lesson->id)->wherePage($page)->get();
     }
     public function render()
     {
@@ -19,7 +19,7 @@ class ShowLesson extends Component
             'questions' => $this->questions
         ]);
     }
-    public function showanswer(){
-        dd($this->answer);
-    }
+    // public function showanswer(){
+    //     dd($this->answer);
+    // }
 }

@@ -14,7 +14,6 @@
                                             name="answer{{$question->id}}" 
                                             id="{{$question->id}}-{{$question->a}}" 
                                             value="{{$question->a}}"
-                                            wire:model="answer"
                                             class="mr-2
 
                                         ">
@@ -52,7 +51,6 @@
                     <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="finalisasi()">
                         Finalisasi
                     </button>
-                    <button wire:click="showanswer()">few</button>
                 </div>
             </div>
         @else
