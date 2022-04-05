@@ -21,19 +21,46 @@
                                         <label for="{{$question->id}}-{{$question->a}}">A. {{ $question->a }}</label>
                                     </li>
                                     <li class="mb-2">
-                                        <input type="radio" name="answer{{$question->id}}" id="{{$question->id}}-{{$question->b}}" class="mr-2">
+                                        <input 
+                                            type="radio" 
+                                            name="answer{{$question->id}}" 
+                                            id="{{$question->id}}-{{$question->b}}"
+                                            wire:model="answer"
+                                            value="{{$question->b}}"
+                                            class="mr-2" 
+                                        ">
                                         <label for="{{$question->id}}-{{$question->b}}">B. {{ $question->b }}</label>
                                     </li>
                                     <li class="mb-2">
-                                        <input type="radio" name="answer{{$question->id}}" id="{{$question->id}}-{{$question->c}}" class="mr-2">
+                                        <input 
+                                            type="radio" 
+                                            name="answer{{$question->id}}" 
+                                            id="{{$question->id}}-{{$question->c}}" 
+                                            wire:model="answer"
+                                            value="{{$question->c}}"
+                                            class="mr-2
+                                        ">
                                         <label for="{{$question->id}}-{{$question->c}}">C. {{ $question->c }}</label>
                                     </li>
                                     <li class="mb-2">
-                                        <input type="radio" name="answer{{$question->id}}" id="{{$question->id}}-{{$question->d}}" class="mr-2">
+                                        <input 
+                                            type="radio" 
+                                            name="answer{{$question->id}}" 
+                                            id="{{$question->id}}-{{$question->d}}" 
+                                            wire:model="answer"
+                                            value="{{$question->d}}"
+                                            class="mr-2">
                                         <label for="{{$question->id}}-{{$question->d}}">D. {{ $question->d }}</label>
                                     </li>
                                     <li class="mb-2">
-                                        <input type="radio" name="answer{{$question->id}}" id="{{$question->id}}-{{$question->e}}" class="mr-2">
+                                        <input 
+                                            type="radio" 
+                                            name="answer{{$question->id}}" 
+                                            id="{{$question->id}}-{{$question->e}}"
+                                            wire:model="answer"
+                                            value="{{$question->e}}" 
+                                            class="mr-2
+                                        ">
                                         <label for="{{$question->id}}-{{$question->e}}">E. {{ $question->e }}</label>
                                     </li>
                                 </ul>
@@ -41,7 +68,7 @@
                         </div>
                         
                         <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="submitAnswer({{$question->id}})">
-                            Berikutnya
+                            Berikutnya 
                         </button>
                     @endforeach
 

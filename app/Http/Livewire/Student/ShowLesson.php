@@ -26,12 +26,21 @@ class ShowLesson extends Component
 
     public $answer;
     public function submitAnswer($id){
-        Answer::create([
-            'user_id'       => auth()->user()->id,
-            'answer'         => $this->answer,
-            'question_id'   => $id
-        ]);
+        $answer= Answer::whereUserId(auth()->user()->id)->whereQuestionId($id)->first();
+        if ($answer) {
+            Answer::find($answer->id)->update([
+                'answer'         => $this->answer,
+            ]);
+        } else{
+            Answer::create([
+                'user_id'       => auth()->user()->id,
+                'answer'         => $this->answer,
+                'question_id'   => $id
+            ]);
+        }
 
-        // return redirect()->route('student.lesson.show', ['slug'=>'matematika','page'=>2]);
+        $this->answer= null;
+
+        // redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
     }
 }
