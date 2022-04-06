@@ -9,10 +9,11 @@ use Livewire\Component;
 
 class ShowLesson extends Component
 {
-    public $questions;
+    public $questions, $pages;
     public function mount($slug, $page){
         $lesson = Lesson::whereSlug($slug)->first();
         $this->questions= Question::whereLessonId($lesson->id)->wherePage($page)->get();
+        $this->pages = Question::whereLessonId($lesson->id)->get();
     }
     public function render()
     {

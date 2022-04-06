@@ -71,15 +71,25 @@
                             Berikutnya 
                         </button>
                     @endforeach
-
-
                 </div>
+
+
                 <div>
                     <h1>Navigation</h1>
                     <div class="flex">
-                        @for ($i=0; $i <= $index; $i++)
-                            <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap">{{$i+1}}</div>
-                        @endfor
+                        @foreach ($pages as $page)
+                            @if (request('page') == $page->page)
+                                <div class="bg-blue-500 px-2 py-1 mx-1 rounded text-white flex-wrap">
+                                    {{$page->page}}
+                                </div>
+                            @else
+                                <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap">
+                                    <a href="{{route('student.lesson.show', ['slug'=>request('slug'),'page'=>$page->page])}}">
+                                        {{$page->page}}
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <h2 class="block">Finalisasi</h2>
                     <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="finalisasi()">
