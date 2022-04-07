@@ -78,17 +78,9 @@
                     <h1>Navigation</h1>
                     <div class="flex">
                         @foreach ($pages as $page)
-                            @if (request('page') == $page->page)
-                                <div class="bg-blue-500 px-2 py-1 mx-1 rounded text-white flex-wrap">
-                                    {{$page->page}}
-                                </div>
-                            @else
-                                <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap">
-                                    <a href="{{route('student.lesson.show', ['slug'=>request('slug'),'page'=>$page->page])}}">
-                                        {{$page->page}}
-                                    </a>
-                                </div>
-                            @endif
+                            <div class="bg-red-500 px-2 py-1 mx-1 rounded text-white flex-wrap" wire:click="navigationControl({{$page->page}}, '{{request('slug')}}')">
+                                {{$page->page}}
+                            </div>
                         @endforeach
                     </div>
                     <h2 class="block">Finalisasi</h2>

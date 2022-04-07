@@ -28,20 +28,28 @@ class ShowLesson extends Component
     public $answer;
     public function submitAnswer($id, $lesson, $page){
         $answer= Answer::whereUserId(auth()->user()->id)->whereQuestionId($id)->first();
-        if ($answer) {
-            Answer::find($answer->id)->update([
-                'answer'         => $this->answer,
-            ]);
+        if (!$this->answer) {
+            return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
         } else{
-            Answer::create([
-                'user_id'       => auth()->user()->id,
-                'answer'         => $this->answer,
-                'question_id'   => $id
-            ]);
+            if ($answer) {
+                Answer::find($answer->id)->update([
+                    'answer'         => $this->answer,
+                ]);
+            } else{
+                Answer::create([
+                    'user_id'       => auth()->user()->id,
+                    'answer'         => $this->answer,
+                    'question_id'   => $id
+                ]);
+            }
         }
 
         $this->answer= null;
 
         return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+    }
+
+    public function navigationControl($page, $slug){
+        return redirect()->route('student.lesson.show', ['slug'=>$slug,'page'=>$page]);
     }
 }

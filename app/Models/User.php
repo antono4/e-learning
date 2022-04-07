@@ -64,4 +64,8 @@ class User extends Authenticatable
     public function Lesson(){
         return $this->belongsTo(Lesson::class);
     }
+
+    public function Score(){
+        return $this->hasMany(Score::class);
+    }
 }
