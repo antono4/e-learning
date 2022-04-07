@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         
-                        <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="submitAnswer({{$question->id}}, '{{$question->lesson->name}}', {{$question->page}})">
+                        <button class="bg-indigo-500 text-white hover:bg-indigo-400 px-7 py-1 rounded" wire:click="submitAnswer({{$question->id}}, '{{$question->lesson->name}}', {{$question->page}}, '{{$question->correct}}')">
                             Berikutnya 
                         </button>
                     @endforeach
