@@ -15,6 +15,15 @@ class ShowLesson extends Component
         $lesson = Lesson::whereSlug($slug)->first();
         $this->questions= Question::whereLessonId($lesson->id)->wherePage($page)->get();
         $this->pages = Question::whereLessonId($lesson->id)->get();
+
+        if(!Score::whereUserId(auth()->user()->id)->whereLessonId($lesson->id)->count()){
+            Score::create([
+                'user_id'       => auth()->user()->id,
+                'lesson_id'     => $lesson->id,
+                'score'         => 0
+            ]);
+        }
+
     }
     public function render()
     {
