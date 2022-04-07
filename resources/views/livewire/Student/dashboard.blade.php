@@ -1,8 +1,5 @@
 <div>
     <div class="container mx-auto mt-20">
-        @foreach (auth()->user()->score as $item)
-            {{ $item->score }}            
-        @endforeach
         <div class="grid grid-cols-4 gap-5">
             @foreach ($lessons as $lesson)
                 <div class="shadow py-5 px-2 bg-white rounded text-center">

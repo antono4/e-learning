@@ -2,10 +2,7 @@
 
 namespace App\Http\Livewire\Student;
 
-use App\Models\Answer;
-use App\Models\Lesson;
-use App\Models\Question;
-use App\Models\Score;
+use App\Models\{ Answer,  Lesson, Question, Score};
 use Livewire\Component;
 
 class ShowLesson extends Component
