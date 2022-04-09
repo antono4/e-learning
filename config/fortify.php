@@ -147,7 +147,7 @@ return [
         'login' => 'checkrole',
         'logout' => 'home',
         'password-confirmation' => null,
-        'register' => 'dashboard',
+        'register' => 'giverole',
         'email-verification' => null,
         'password-reset' => null,
     ],

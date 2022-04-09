@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\CheckRoleController;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\{ CheckRoleController, GiveRoleController };
 use App\Http\Livewire\Student\{ Dashboard as StudentDashboard, ShowLesson as StudentShowLesson };
 use App\Http\Livewire\Teacher\{ AddQuestion, Dashboard as TeacherDashboard, Lessons, ShowLesson};
 use App\Models\Lesson;
@@ -26,6 +25,7 @@ Route::get('/', function () {
     ]);
 });
 Route::get('/checkrole', CheckRoleController::class);
+Route::get('/giverole', GiveRoleController::class);
 
 
 
