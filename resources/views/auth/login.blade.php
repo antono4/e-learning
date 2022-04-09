@@ -15,15 +15,15 @@
             <h6 class="text-xl text-gray-500 mt-5">Login using social Networks</h6>
 
             <div class="social-networks flex justify-center mt-3">
-                <div class="bg-[#395693] mx-2 w-[35px] h-[35px] rounded-full text-center leading-[35px] text-white">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <div class="bg-[#d54c3f] mx-2 w-[35px] h-[35px] rounded-full text-center leading-[35px] text-white">
-                    <i class="fab fa-google-plus-g"></i>
-                </div>
-                <div class="bg-[#1b71b6] mx-2 w-[35px] h-[35px] rounded-full text-center leading-[35px] text-white">
-                    <i class="fab fa-linkedin-in"></i>
-                </div>
+                <a href="" class="bg-[#395693] mx-2 w-[45px] h-[45px] rounded-full text-center leading-[45px] text-white">
+                    <i class="text-xl fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="bg-[#d54c3f] mx-2  w-[45px] h-[45px] rounded-full text-center leading-[45px] text-white">
+                    <i class="text-xl fab fa-google-plus-g"></i>
+                </a>
+                <a href="" class="bg-[#1b71b6] mx-2  w-[45px] h-[45px] rounded-full text-center leading-[45px] text-white">
+                    <i class="text-xl fab fa-linkedin-in"></i>
+                </a>
             </div>
 
             <div class="flex items-center justify-center my-5">
@@ -43,14 +43,20 @@
                     :value="old('email')" 
                     required
                 >    
-                <input 
-                    placeholder="Password" 
-                    class="placeholder:font-semibold placeholder:text-gray-400 placeholder:tracking-wider border border-gray-300 bg-gray-50 rounded-3xl h-[50px] w-full mb-5" 
-                    type="password" 
-                    name="password" 
-                    required 
-                    autocomplete="current-password
-                ">    
+                <div class="relative mb-5">
+                    <input 
+                        placeholder="Password" 
+                        class="placeholder:font-semibold placeholder:text-gray-400 placeholder:tracking-wider border border-gray-300 bg-gray-50 rounded-3xl h-[50px] w-full" 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        required 
+                        autocomplete="current-password
+                    ">     
+                    <span class="text-xl absolute top-1/2 -translate-y-1/2 right-5 cursor-pointer" onclick="passwordToggle()">
+                        <i class="fa-solid fa-eye text-gray-500" id="eye"></i>
+                    </span>
+                </div>   
                 <button class="bg-emerald-500 hover:bg-emerald-400 h-[45px] rounded-3xl px-32 text-white text-[15px]">Login</button>
             </form> 
         </div>
@@ -68,6 +74,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const passwordToggle = () => {
+            const pass = document.querySelector('#password');
+            const eye  = document.querySelector('#eye');
+            if(pass.type === 'password'){
+                pass.type = "text";
+                eye.classList.toggle('fa-eye-slash');
+                eye.classList.toggle('fa-eye');
+            } else{
+                pass.type = "password";
+                eye.classList.toggle('fa-eye-slash');
+                eye.classList.toggle('fa-eye');
+            }
+        }
+    </script>
 
     
     {{-- <x-jet-authentication-card>
