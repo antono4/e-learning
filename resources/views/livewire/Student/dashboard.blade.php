@@ -1,5 +1,39 @@
-<div>
+<div class="bg-gray-50">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    
     <div class="container mx-auto mt-20">
+        <div class="text-center mb-16">
+            <h2 class="font-semibold text-4xl tracking-wider">Pilih Pelajaran</h2>
+            <p class="text-gray-700 mt-3">
+                Pilih pelajaran sesuai jadwal hari 
+                <span class="font-bold text-xl tracking-wider ml-2 text-[#00a498]">SENIN 07 Oktober</span>
+            </p>
+        </div>
+        <div class="grid grid-cols-4">
+            @foreach ($lessons as $lesson)    
+                <div class="hover:shadow-md border flex justify-center items-center">
+                    <a 
+                        href="{{ route('student.lesson.show', ['slug'=>$lesson->slug,'page'=>1]) }}"
+                        class="w-full h-full py-20 px-10
+                    ">
+                        <img src="{{ asset('img/development.svg') }}" width="100px" class="mx-auto">
+                        <h5 class="text-center mt-5 text-md tracking-wider">
+                            {{ $lesson->name }}
+                        </h5>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- <div class="container mx-auto mt-20">
         <div class="grid grid-cols-4 gap-5">
             @foreach ($lessons as $lesson)
                 <div class="shadow py-5 px-2 bg-white rounded text-center">
@@ -18,5 +52,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 </div>
