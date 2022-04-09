@@ -62,7 +62,9 @@
                 <h6 class="text-xl text-gray-100 mt-5">
                     Sign up and discover a great amount of new opportunities!
                 </h6>
-                <button class="bg-white h-[45px] rounded-3xl px-32 text-[15px] mt-10">Login</button>
+                <a href="{{ route('register') }}" class="inline-block bg-white h-[45px] leading-[45px] rounded-3xl px-32 text-[15px] mt-10">
+                    Register
+                </a>
             </div>
         </div>
     </div>
