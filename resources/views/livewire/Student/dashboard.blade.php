@@ -51,7 +51,7 @@
         </div>
         <div class="grid grid-cols-4">
             @foreach ($lessons as $lesson)    
-                <div class="hover:shadow-md border flex justify-center items-center">
+                <div class="hover:shadow-xl border flex justify-center items-center">
                     <a 
                         href="{{ route('student.lesson.show', ['slug'=>$lesson->slug,'page'=>1]) }}"
                         class="w-full h-full py-20 px-10
@@ -66,32 +66,248 @@
         </div>
     </div>
 
-    {{-- <div class="container mx-auto mt-20">
-        <div class="grid grid-cols-4 gap-5">
-            @foreach ($lessons as $lesson)
-                <div class="shadow py-5 px-2 bg-white rounded text-center">
-                    <img src="{{ asset('img/no-image.jpg') }}" alt="" width="100%" class="h-40 object-cover">
-                    <h3 class="text-xl mt-3 text-center font-semibold tracking-wider mb-5">{{ $lesson->name }}</h3>
-                    <a href="{{ route('student.lesson.show', ['slug'=>$lesson->slug,'page'=>1]) }}" class="bg-indigo-500 hover:bg-indigo-400 px-10 py-2 mx-auto text-center text-white rounded">Lihat Soal</a>
-                    @if ($lesson->status == 'finished')
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                    @elseif ($lesson->status == 'not')
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                        </svg>
-                    @endif
+    
+    <footer class="bg-[#48556c] mt-20 p-10 text-white">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 gap-20">
+                <div>
+                    <div class="flex justify-between">
+                        <h2 class="text-xl font-bold tracking-wider">IL-Learning</h2>
+                        <div class="flex justify-center items-center">
+                            <div
+                                x-data="{
+                                    open: false,
+                                    toggle() {
+                                        if (this.open) {
+                                            return this.close()
+                                        }
+                        
+                                        this.$refs.button.focus()
+                        
+                                        this.open = true
+                                    },
+                                    close(focusAfter) {
+                                        if (! this.open) return
+                        
+                                        this.open = false
+                        
+                                        focusAfter && focusAfter.focus()
+                                    }
+                                }"
+                                x-on:keydown.escape.prevent.stop="close($refs.button)"
+                                x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                                x-id="['dropdown-button']"
+                                class="relative"
+                            >
+                                <!-- Button -->
+                                <button
+                                    x-ref="button"
+                                    x-on:click="toggle()"
+                                    :aria-expanded="open"
+                                    :aria-controls="$id('dropdown-button')"
+                                    type="button"
+                                    class="border border-gray-400 px-8 py-2 rounded-3xl shadow"
+                                >
+                                    <span>Bahasa Indonesia</span>
+                                </button>
+                        
+                                <!-- Panel -->
+                                <div
+                                    x-ref="panel"
+                                    x-show="open"
+                                    x-transition.origin.top.left
+                                    x-on:click.outside="close($refs.button)"
+                                    :id="$id('dropdown-button')"
+                                    style="display: none;"
+                                    class="absolute left-0 mt-2 w-full bg-white border border-black rounded shadow-md overflow-hidden"
+                                >
+                                    <div>
+                                        <a href="#" class="block w-full text-gray-800 px-4 py-2 text-left text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Indonesia
+                                        </a>
+                        
+                                        <a href="#" class="block w-full text-gray-800 px-4 py-2 text-left text-sm hover:bg-gray-100 disabled:text-gray-500" >
+                                            Inggris
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-7">
+
+                    <p class="mt-7 text-sm text-gray-300">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est earum delectus exercitationem, quaerat ipsam ratione
+                    </p>
+                    <p class="mt-8 text-gray-300 text-sm">
+                        &copy; 2022 Diprella LLC. All rights reserved.
+                    </p>
                 </div>
-            @endforeach
+                <div class="grid grid-cols-3 gap-10">
+                    <div>
+                        <h3 class="text-[#3bb497] text-xl font-semibold tracking-widest">About</h3>
+                        <ul class="mt-3">
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Courses</a>
+                            </li>
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Prices</a>
+                            </li>
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">For Business</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[#3bb497] text-xl font-semibold tracking-widest">IL-Learning</h3>
+                        <ul class="mt-3">
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Company</a>
+                            </li>
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Road Map</a>
+                            </li>
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Term and Condition</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[#3bb497] text-xl font-semibold tracking-widest">Need Help?</h3>
+                        <ul class="mt-3">
+                            <li class="mb-2 text-gray-300 hover:text-white">
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div> --}}
+    </footer>
+
     <script src="https://kit.fontawesome.com/d02202f823.js" crossorigin="anonymous"></script>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
     <script>
         particlesJS.load('particles-js', 'assets/particles.json', function() {
-  console.log('callback - particles.js config loaded');
-});
-        particlesJS("particles-js", {"particles":{"number":{"value":20,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"edge","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":false,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":100,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1,"direction":"bottom-right","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+            console.log('callback - particles.js config loaded');
+        });
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value":20,
+                    "density": {
+                        "enable":true,
+                        "value_area":800
+                    }
+                },
+                "color":{
+                    "value":"#ffffff"
+                },
+                "shape": {
+                    "type":"edge",
+                    "stroke":{
+                        "width":0,
+                        "color":"#000000"
+                    },
+                    "polygon": {
+                        "nb_sides":3
+                    },
+                    "image": {
+                        "src":"img/github.svg",
+                        "width":100,
+                        "height":100
+                    }
+                },
+                "opacity": {
+                    "value":0.5,
+                    "random":false,
+                    "anim": {
+                        "enable":false,
+                        "speed":1,
+                        "opacity_min":0.1,
+                        "sync":false
+                    }
+                },
+                "size": { 
+                    "value":3,
+                    "random":false,
+                    "anim": {
+                        "enable":false,
+                        "speed":40,
+                        "size_min":0.1,
+                        "sync":false
+                    }
+                },
+                "line_linked": {
+                    "enable":true,
+                    "distance":100,
+                    "color":"#ffffff",
+                    "opacity":0.4,
+                    "width":1
+                },
+                "move": { 
+                    "enable":true,
+                    "speed":1,
+                    "direction":"bottom-right",
+                    "random":false,
+                    "straight":false,
+                    "out_mode":"out",
+                    "bounce":false,
+                    "attract": { 
+                        "enable":false,
+                        "rotateX":600,
+                        "rotateY":1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on":"canvas",
+                "events": {
+                    "onhover": {
+                        "enable":false,
+                        "mode":"repulse"
+                    },
+                    "onclick": {
+                        "enable":false,
+                        "mode":"push"
+                    },
+                    "resize":true
+                },
+                "modes": {
+                    "grab": {
+                        "distance":400,
+                        "line_linked": {
+                            "opacity":1
+                        }
+                    },
+                    "bubble": {
+                        "distance":400,
+                        "size":40,
+                        "duration":2,
+                        "opacity":8,
+                        "speed":3
+                    },
+                    "repulse": {
+                        "distance":200,
+                        "duration":0.4
+                    },
+                    "push": {
+                        "particles_nb":4
+                    },
+                    "remove": {
+                        "particles_nb":2
+                    }
+                }
+            },
+            "retina_detect":true
+        });
+
+        const nav= document.querySelector("nav");
+        const title= document.querySelector(".title");
+        window.addEventListener('scroll', function(){
+            nav.classList.toggle('bg-white', window.scrollY > 0);
+            title.classList.toggle('text-black', window.scrollY > 0);
+        });
     </script>
 </div>

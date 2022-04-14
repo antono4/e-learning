@@ -1,4 +1,13 @@
-<nav x-data="{ open: false }" class="bg-transparent fixed left-0 right-0 z-10">
+<nav x-data="{ open: false }" class="fixed left-0 right-0 z-10">
+    <style>
+        nav{
+            transition: 0.5s;
+            padding: 20px 0;
+        }
+        nav.bg-white{
+            padding: 0 0;
+        }
+    </style>
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,7 +16,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                        <h2 class="text-white text-xl tracking-wider">IL-Learning</h2>
+                        <h2 class="title text-white text-xl tracking-wider">IL-Learning</h2>
                     </a>
                 </div>
 
