@@ -106,7 +106,7 @@
                                     :aria-expanded="open"
                                     :aria-controls="$id('dropdown-button')"
                                     type="button"
-                                    class="border border-gray-400 px-8 py-2 rounded-3xl shadow"
+                                    class="border border-gray-400 px-8 py-2 rounded-3xl shadow hover:bg-gray-400 hover:bg-opacity-40"
                                 >
                                     <span>Bahasa Indonesia</span>
                                 </button>

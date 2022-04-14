@@ -33,7 +33,7 @@ class ShowLesson extends Component
     // }
 
     public $answer;
-    public function submitAnswer($id, $lesson, $page, $correct){
+    public function submitAnswer($id, $lesson, $page, $correct, $action){
         $user_id= auth()->user()->id;
 
 
@@ -41,7 +41,13 @@ class ShowLesson extends Component
         $score= Score::whereUserId($user_id)->whereLessonId(Lesson::whereSlug($lesson)->first()->id)->first();
 
         if (!$this->answer) {
-            return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+            
+            if($action == 'prev'){
+                return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page-1]);
+            } elseif($action == 'next'){
+                return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+            }
+
         } else{
             if ($answer) {
                 Answer::find($answer->id)->update([
@@ -70,7 +76,11 @@ class ShowLesson extends Component
 
         $this->answer= null;
 
-        return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+        if($action == 'prev'){
+            return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page-1]);
+        } elseif($action == 'next'){
+            return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+        }
     }
 
     public function navigationControl($page, $slug){
