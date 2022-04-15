@@ -51,17 +51,31 @@
         </div>
         <div class="grid grid-cols-4">
             @foreach ($lessons as $lesson)    
-                <div class="hover:shadow-xl border flex justify-center items-center">
-                    <a 
-                        href="{{ route('student.lesson.show', ['slug'=>$lesson->slug,'page'=>1]) }}"
-                        class="w-full h-full py-20 px-10
-                    ">
-                        <img src="{{ asset('img/development.svg') }}" width="100px" class="mx-auto">
-                        <h5 class="text-center mt-5 text-md tracking-wider">
-                            {{ $lesson->name }}
-                        </h5>
-                    </a>
-                </div>
+                @if (App\Models\Score::whereUserId(auth()->user()->id)->whereLessonId($lesson->id)->count())
+                    <div 
+                        class="hover:shadow-xl border flex justify-center items-center cursor-not-allowed"
+                        style="background: linear-gradient(213deg,#3ba5b4 0,#38ba8a 100%)"
+                    >
+                        <div>
+                            <img src="{{ asset('img/development.svg') }}" width="100px" class="mx-auto">
+                            <h5 class="text-center mt-5 text-md tracking-wider text-white">
+                                {{ $lesson->name }}
+                            </h5>
+                        </div>
+                    </div>
+                @else
+                    <div class="hover:shadow-xl border flex justify-center items-center">
+                        <a 
+                            href="{{ route('student.lesson.show', ['slug'=>$lesson->slug,'page'=>1]) }}"
+                            class="w-full h-full py-20 px-10
+                        ">
+                            <img src="{{ asset('img/development.svg') }}" width="100px" class="mx-auto">
+                            <h5 class="text-center mt-5 text-md tracking-wider">
+                                {{ $lesson->name }}
+                            </h5>
+                        </a>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>
