@@ -145,7 +145,7 @@ return [
 
     'redirects' => [
         'login' => 'checkrole',
-        'logout' => 'home',
+        'logout' => 'login',
         'password-confirmation' => null,
         'register' => 'giverole',
         'email-verification' => null,

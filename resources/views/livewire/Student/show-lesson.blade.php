@@ -116,19 +116,28 @@
                                 ">
                                     Soal Sebelumnya 
                                 </button>
-                                <button 
-                                    class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md"
-                                    wire:click="
-                                        submitAnswer(
-                                            {{$question->id}}, 
-                                            '{{$question->lesson->name}}', 
-                                            {{$question->page}}, 
-                                            '{{$question->correct}}',
-                                            'next'
-                                        )
-                                    ">
-                                    Soal Berikutnya 
-                                </button>
+                                @if ($pages->count() == request('page'))
+                                    <a 
+                                        href="{{ route('student.dashboard') }}"
+                                        class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md">
+                                        Selesai
+                                    </a>
+                                @else
+                                    <button 
+                                        class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md"
+                                        wire:click="
+                                            submitAnswer(
+                                                {{$question->id}}, 
+                                                '{{$question->lesson->name}}', 
+                                                {{$question->page}}, 
+                                                '{{$question->correct}}',
+                                                'next'
+                                            )
+                                        ">
+                                        Soal Berikutnya 
+                                    </button>
+                                    
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -137,12 +146,14 @@
                 <div class="col-span-3">
                     <div 
                         class="
-                            cursor-pointer overflow-hidden px-4 py-3 rounded-md border shadow flex-wrap items-center mb-5 text-white"
+                            cursor-pointer overflow-hidden rounded-md px-4 py-3 border shadow flex-wrap items-center mb-5 text-white"
                         "
                         style="background: linear-gradient(213deg,#3ba5b4 0,#38ba8a 100%)"
                     >
-                        <i class="fa-solid fa-gauge mr-3"></i>
-                        Kembali ke Dashboard
+                        <a href="{{ route('student.dashboard') }}" class="h-full w-full block">
+                            <i class="fa-solid fa-gauge mr-3"></i>
+                            Kembali ke Dashboard
+                        </a>
                     </div>
                     <div class="border-2 overflow-hidden rounded-md shadow bg-white mb-5">
                         <div class="flex p-3">

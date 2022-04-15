@@ -6,6 +6,7 @@
         }
         nav.bg-white{
             padding: 0 0;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.3)
         }
     </style>
     <!-- Primary Navigation Menu -->
