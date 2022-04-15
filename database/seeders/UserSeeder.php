@@ -15,27 +15,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
-            [
-                'email' => 'akmalrahman@gmail.com',
-                'password' => bcrypt('qwertyuiop'),
-                'name' => 'Akmal Rahman',  
-            ],
-            [
-                'email' => 'diaspersada@gmail.com',
-                'password' => bcrypt('qwertyuiop'),
-                'name' => 'Dias Persada',  
-            ],
-            [
-                'email' => 'dudijun@gmail.com',
-                'password' => bcrypt('qwertyuiop'),
-                'name' => 'Dudi Junaedi',  
-            ],
-            [
-                'email' => 'winartititin@gmail.com',
-                'password' => bcrypt('qwertyuiop'),
-                'name' => 'Titin Winarti',  
-            ],
-        ]);
+        User::create([
+            'email' => 'akmalrahman@gmail.com',
+            'password' => bcrypt('qwertyuiop'),
+            'name' => 'Akmal Rahman',
+        ])->assignRole('student');
+
+        User::create([
+            'email' => 'diaspersada@gmail.com',
+            'password' => bcrypt('qwertyuiop'),
+            'name' => 'Dias Persada',
+        ])->assignRole('student');
+        
+        User::create([
+            'email' => 'dudijun@gmail.com',
+            'password' => bcrypt('qwertyuiop'),
+            'name' => 'Dudi Junaedi',
+        ])->assignRole('admin');
+        
+        User::create([
+            'email' => 'winartititin@gmail.com',
+            'password' => bcrypt('qwertyuiop'),
+            'name' => 'Titin Winarti',  
+        ])->assignRole('teacher');
     }
 }

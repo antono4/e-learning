@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Question;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,10 +18,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LessonSeeder::class,
             TeacherSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class,
-            RoleSeeder::class
+            QuestionSeeder::class
+            // ModelHasRoleSeeder::class,
         ]);
 
-        Question::factory(20)->create();
+        // Question::factory(20)->create();
     }
 }

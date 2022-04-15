@@ -46,6 +46,8 @@ class ShowLesson extends Component
                 return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page-1]);
             } elseif($action == 'next'){
                 return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+            } elseif($action == 'finish'){
+                return redirect()->route('student.dashboard');
             }
 
         } else{
@@ -80,6 +82,8 @@ class ShowLesson extends Component
             return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page-1]);
         } elseif($action == 'next'){
             return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
+        } elseif($action == 'finish'){
+            return redirect()->route('student.dashboard');
         }
     }
 

@@ -4,7 +4,7 @@
             <div class="grid grid-cols-9 gap-6">
                 <div class="col-span-6">
                     @foreach ($questions as $index => $question)
-                        <div class="border-2 rounded-md shadow bg-white mb-5 p-7">
+                        <div class="border-2 rounded-md shadow mb-5 bg-white p-7">
                             
                             <div class="flex gap-3 items-center">
                                 <div>
@@ -22,15 +22,15 @@
                                 </div>
                             </div>
 
-                            <p class="mb-3 mt-5 text-xl">{{ $question->question }}</p>
-                            <div>
+                            <p class="mb-3 mt-5 text-[18px] leading-8">{{ $question->question }}</p>
+                            <div class="mt-7">
                                 <ul>
-                                    <li class="mb-2">
+                                    <li class="mb-3">
                                         <input 
                                             type="radio" 
                                             name="answer{{$question->id}}" 
                                             id="{{$question->id}}-{{$question->a}}" 
-                                            wire:model="answer"
+                                            wire:model.defer="answer"
                                             value="{{$question->a}}"
                                             class="mr-2
 
@@ -39,12 +39,12 @@
                                             A. {{ $question->a }}
                                         </label>
                                     </li>
-                                    <li class="mb-2">
+                                    <li class="mb-3">
                                         <input 
                                             type="radio" 
                                             name="answer{{$question->id}}" 
                                             id="{{$question->id}}-{{$question->b}}"
-                                            wire:model="answer"
+                                            wire:model.defer="answer"
                                             value="{{$question->b}}"
                                             class="mr-2" 
                                         ">
@@ -52,12 +52,12 @@
                                             B. {{ $question->b }}
                                         </label>
                                     </li>
-                                    <li class="mb-2">
+                                    <li class="mb-3">
                                         <input 
                                             type="radio" 
                                             name="answer{{$question->id}}" 
                                             id="{{$question->id}}-{{$question->c}}" 
-                                            wire:model="answer"
+                                            wire:model.defer="answer"
                                             value="{{$question->c}}"
                                             class="mr-2
                                         ">
@@ -65,31 +65,35 @@
                                             C. {{ $question->c }}
                                         </label>
                                     </li>
-                                    <li class="mb-2">
-                                        <input 
-                                            type="radio" 
-                                            name="answer{{$question->id}}" 
-                                            id="{{$question->id}}-{{$question->d}}" 
-                                            wire:model="answer"
-                                            value="{{$question->d}}"
-                                            class="mr-2">
-                                        <label  class="text-[17px]" for="{{$question->id}}-{{$question->d}}">
-                                            D. {{ $question->d }}
-                                        </label>
-                                    </li>
-                                    <li class="mb-2">
-                                        <input 
-                                            type="radio" 
-                                            name="answer{{$question->id}}" 
-                                            id="{{$question->id}}-{{$question->e}}"
-                                            wire:model="answer"
-                                            value="{{$question->e}}" 
-                                            class="mr-2
-                                        ">
-                                        <label  class="text-[17px]" for="{{$question->id}}-{{$question->e}}">
-                                            E. {{ $question->e }}
-                                        </label>
-                                    </li>
+                                    @if ($question->d)
+                                        <li class="mb-3">
+                                            <input 
+                                                type="radio" 
+                                                name="answer{{$question->id}}" 
+                                                id="{{$question->id}}-{{$question->d}}" 
+                                                wire:model.defer="answer"
+                                                value="{{$question->d}}"
+                                                class="mr-2">
+                                            <label  class="text-[17px]" for="{{$question->id}}-{{$question->d}}">
+                                                D. {{ $question->d }}
+                                            </label>
+                                        </li>
+                                    @endif
+                                    @if ($question->e)
+                                        <li class="mb-3">
+                                            <input 
+                                                type="radio" 
+                                                name="answer{{$question->id}}" 
+                                                id="{{$question->id}}-{{$question->e}}"
+                                                wire:model.defer="answer"
+                                                value="{{$question->e}}" 
+                                                class="mr-2
+                                            ">
+                                            <label  class="text-[17px]" for="{{$question->id}}-{{$question->e}}">
+                                                E. {{ $question->e }}
+                                            </label>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -108,7 +112,7 @@
                                     wire:click="
                                         submitAnswer(
                                             {{$question->id}}, 
-                                            '{{$question->lesson->name}}', 
+                                            '{{$question->lesson->slug}}', 
                                             {{$question->page}}, 
                                             '{{$question->correct}}',
                                             'prev'
@@ -117,18 +121,26 @@
                                     Soal Sebelumnya 
                                 </button>
                                 @if ($pages->count() == request('page'))
-                                    <a 
-                                        href="{{ route('student.dashboard') }}"
-                                        class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md">
+                                    <button 
+                                        class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md"
+                                        wire:click="
+                                            submitAnswer(
+                                                {{$question->id}}, 
+                                                '{{$question->lesson->slug}}', 
+                                                {{$question->page}}, 
+                                                '{{$question->correct}}',
+                                                'finish'
+                                            )
+                                        ">
                                         Selesai
-                                    </a>
+                                    </button>
                                 @else
                                     <button 
                                         class="hover:bg-[#3aaca5] text-white bg-[#37b68f] px-7 py-2 rounded-md"
                                         wire:click="
                                             submitAnswer(
                                                 {{$question->id}}, 
-                                                '{{$question->lesson->name}}', 
+                                                '{{$question->lesson->slug}}', 
                                                 {{$question->page}}, 
                                                 '{{$question->correct}}',
                                                 'next'
@@ -136,7 +148,6 @@
                                         ">
                                         Soal Berikutnya 
                                     </button>
-                                    
                                 @endif
                             </div>
                         </div>
