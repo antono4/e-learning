@@ -47,6 +47,21 @@ class ShowLesson extends Component
             } elseif($action == 'next'){
                 return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
             } elseif($action == 'finish'){
+                
+                if($score->score < 75){
+                    Score::find($score->id)->update([
+                        'status' => 'Dibawah KKM'
+                    ]);
+                } elseif ($score->score == 75) {
+                    Score::find($score->id)->update([
+                        'status' => 'Setara KKM'
+                    ]);
+                } elseif ($score->score > 75) {
+                    Score::find($score->id)->update([
+                        'status' => 'Diatas KKM'
+                    ]);
+                }
+
                 return redirect()->route('student.dashboard');
             }
 
@@ -83,6 +98,22 @@ class ShowLesson extends Component
         } elseif($action == 'next'){
             return redirect()->route('student.lesson.show', ['slug'=>$lesson,'page'=>$page+1]);
         } elseif($action == 'finish'){
+
+            if($score->score < 75){
+                Score::find($score->id)->update([
+                    'status' => 'Dibawah KKM'
+                ]);
+            } elseif ($score->score == 75) {
+                Score::find($score->id)->update([
+                    'status' => 'Setara KKM'
+                ]);
+            } elseif ($score->score > 75) {
+                Score::find($score->id)->update([
+                    'status' => 'Diatas KKM'
+                ]);
+            }
+            
+
             return redirect()->route('student.dashboard');
         }
     }
