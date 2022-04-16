@@ -11,6 +11,6 @@ class Lessons extends Component
     {
         return view('livewire.teacher.lessons', [
             'lessons' => Lesson::whereUserId(auth()->user()->id)->get()
-        ]);
+        ])->extends('livewire.teacher.master')->section('content');
     }
 }

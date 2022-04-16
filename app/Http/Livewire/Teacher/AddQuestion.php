@@ -14,7 +14,7 @@ class AddQuestion extends Component
         return view('livewire.teacher.add-question', [
             'lessons'           => Lesson::whereUserId(auth()->user()->id)->get(),
             'selectedLesson'    => Lesson::whereId($this->optionLesson)->first()
-        ]);
+        ])->extends('livewire.teacher.master')->section('content');
     }
 
     public $question, $optionLesson, $a, $b, $c, $d, $e, $correct;

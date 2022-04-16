@@ -13,6 +13,6 @@ class Dashboard extends Component
         $lesson= Lesson::whereUserId(auth()->user()->id)->first('id');
         return view('livewire.teacher.dashboard', [
             'scores'  => Score::whereLessonId($lesson->id)->get()
-        ]);
+        ])->extends('livewire.teacher.master')->section('content');
     }
 }
