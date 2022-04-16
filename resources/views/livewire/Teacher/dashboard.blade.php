@@ -14,7 +14,7 @@
                 </td>
             </tr>
 
-            @foreach ($scores as $index => $score)
+            @forelse ($scores as $index => $score)
                 <tr 
                     class="
                         border
@@ -48,7 +48,13 @@
                         >{{ $score->status }}</span>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr class="bg-white">
+                    <th class="py-3 px-4" colspan="4">
+                        Belum ada siswa submit nilai
+                    </th>
+                </tr>
+            @endforelse
         </table>
     </div>
 </div>
