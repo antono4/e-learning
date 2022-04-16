@@ -31,14 +31,14 @@ Route::get('/giverole', GiveRoleController::class);
 
 
 // student route group
-Route::prefix('student')->group(function () {
+Route::middleware(['role:student', 'auth'])->prefix('student')->group(function () {
     Route::get('/dashboard', StudentDashboard::class)->name('student.dashboard');
     // Route::get('/lessons/{slug}/', StudentShowLesson::class)->name('student.lesson.show');
     Route::get('/lessons/{slug}/{page}', StudentShowLesson::class)->name('student.lesson.show');
 });
 
 // teacher route group
-Route::prefix('teacher')->group(function () {
+Route::middleware(['role:teacher', 'auth'])->prefix('teacher')->group(function () {
     Route::get('/dashboard', TeacherDashboard::class)->name('teacher.dashboard');
     // teacher Lesson Group Route
     Route::prefix('lessons')->name('lesson.')->group(function(){
