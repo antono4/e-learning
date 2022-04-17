@@ -11,17 +11,13 @@ class AddQuestion extends Component
     public $no= 1;
     public function render()
     {
-        return view('livewire.teacher.add-question', [
-            'lessons'           => Lesson::whereUserId(auth()->user()->id)->get(),
-            'selectedLesson'    => Lesson::whereId($this->optionLesson)->first()
-        ])->extends('livewire.teacher.master')->section('content');
+        return view('livewire.teacher.add-question')->extends('livewire.teacher.master')->section('content');
     }
 
-    public $question, $optionLesson, $a, $b, $c, $d, $e, $correct;
+    public $question, $a, $b, $c, $d, $e, $correct;
 
     protected $rules = [
         'question'          => 'required',
-        'optionLesson'      => 'required',
         'a'                 => 'required',
         'b'                 => 'required',
         'c'                 => 'required',
@@ -32,7 +28,8 @@ class AddQuestion extends Component
 
         Question::create([
             'question'          => $this->question,
-            'lesson_id'         => $this->optionLesson,
+            'lesson_id'         => 1,
+            'page'              => $this->no,
             'a'                 => $this->a,
             'b'                 => $this->b,
             'c'                 => $this->c,
@@ -60,9 +57,8 @@ class AddQuestion extends Component
         $this->optionE = !$this->optionE;
         $this->e = null;
     }
-    public $hideSelectLesson= true, $optionButton= true;
+    public $optionButton= true;
     public function hideElements(){
-        $this->hideSelectLesson= false;
         $this->optionButton= false;
     }
 }

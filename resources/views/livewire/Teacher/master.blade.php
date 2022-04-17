@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('livewire.teacher.layouts.head')
+    <livewire:styles />
 </head>
 
 <body>
@@ -14,7 +15,7 @@
       <div class="main-content">
         <section class="section">
             <div class="section-header">
-                Title
+                @yield('header')
             </div>
         
             <div class="section-body">
@@ -27,6 +28,7 @@
   </div>
 
   @include('livewire.teacher.layouts.feet')
+  <livewire:scripts />
   
 </body>
 </html>
