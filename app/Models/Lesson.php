@@ -9,6 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $fillable= ['name', 'slug', 'user_id', 'status'];
+
     public function Question(){
         return $this->hasMany(Question::class);
     }

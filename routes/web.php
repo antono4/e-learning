@@ -3,6 +3,7 @@
 use App\Http\Controllers\{ CheckRoleController, GiveRoleController };
 use App\Http\Livewire\Student\{ Dashboard as StudentDashboard, ShowLesson as StudentShowLesson };
 use App\Http\Livewire\Teacher\{ AddQuestion, Dashboard as TeacherDashboard, Lessons, ShowLesson};
+use App\Http\Livewire\Admin\{ Dashboard as AdminDashboard, ShowTeacher};
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::middleware(['role:teacher', 'auth'])->prefix('teacher')->group(function (
     });
 
     Route::get('/addquestion', AddQuestion::class)->name('add.question');
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', AdminDashboard::class)->name('admin.dashboard');
+
+    Route::get('/show-teacher/{slug}', ShowTeacher::class)->name('admin.teacher.show');
 });
 
 

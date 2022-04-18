@@ -15,11 +15,11 @@ class CheckRoleController extends Controller
     public function __invoke()
     {
         if(auth()->user()->hasRole('admin')){
-            return 'admin';
+            return redirect()->route('admin.dashboard');
         } elseif(auth()->user()->hasRole('teacher')){
             return redirect()->route('teacher.dashboard');
         } elseif(auth()->user()->hasRole('student')){
-            return redirect()->route('student.dashboard');;
+            return redirect()->route('student.dashboard');
         } else{
             return abort(404);
         }
