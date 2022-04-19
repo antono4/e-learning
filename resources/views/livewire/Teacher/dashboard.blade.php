@@ -83,57 +83,59 @@
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-striped">
-              <tr>
-                <th>Nama Siswa</th>
-                <th>Progress</th>
-                <th>Nilai</th>
-                <th>Status</th>
-                <th>Due Date</th>
-                <th>Action</th>
-              </tr>
-                @foreach ($scores as $index => $score)
+                <tr>
+                    <th>Nama Siswa</th>
+                    <th>Progress</th>
+                    <th>Nilai</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th>Action</th>
+                </tr>
+                @if ($lesson_count)
+                    @foreach ($scores as $index => $score)
+                        <tr>
+                            <td>
+                                <img 
+                                    alt="image" 
+                                    src="{{ asset('template/stisla') }}/assets/img/avatar/avatar-5.png"
+                                    class="rounded-circle mr-3" 
+                                    width="35" 
+                                    data-toggle="tooltip" 
+                                    title="{{ $score->user->name }}"
+                                >
+                                {{ $score->user->name }}
+                            </td>
+                            <td class="align-middle">
+                                <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
+                                    <div class="progress-bar bg-success" data-width="100"></div>
+                                </div>
+                            </td>
+                            <td>{{ $score->score }}</td>
+                            <td>
+                                <div 
+                                    class="
+                                        badge
+                                        @if($score->status == 'Diatas KKM')
+                                            badge-success
+                                        @elseif($score->status == 'Dibawah KKM')
+                                            badge-danger
+                                        @elseif($score->status == 'Setara KKM')
+                                            badge-warning
+                                        @endif
+                                    "
+                                >{{ $score->status }}</div>
+                            </td>
+                            <td>2018-01-20</td>
+                            <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <td>
-                            <img 
-                                alt="image" 
-                                src="{{ asset('template/stisla') }}/assets/img/avatar/avatar-5.png"
-                                class="rounded-circle mr-3" 
-                                width="35" 
-                                data-toggle="tooltip" 
-                                title="{{ $score->user->name }}"
-                            >
-                            {{ $score->user->name }}
-                        </td>
-                        <td class="align-middle">
-                            <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
-                                <div class="progress-bar bg-success" data-width="100"></div>
-                            </div>
-                        </td>
-                        <td>{{ $score->score }}</td>
-                        <td>
-                            <div 
-                                class="
-                                    badge
-                                    @if($score->status == 'Diatas KKM')
-                                        badge-success
-                                    @elseif($score->status == 'Dibawah KKM')
-                                        badge-danger
-                                    @elseif($score->status == 'Setara KKM')
-                                        badge-warning
-                                    @endif
-                                "
-                            >{{ $score->status }}</div>
-                        </td>
-                        <td>2018-01-20</td>
-                        <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                    </tr>
-                {{-- @empty
-                    <tr class="bg-white">
-                        <th class="py-3 px-4" colspan="4">
-                            Belum ada siswa submit nilai
+                        <th colspan="6">
+                            <center>Belum ada data nilai</center>
                         </th>
-                    </tr> --}}
-                @endforeach
+                    </tr>
+                @endif
             </table>
           </div>
         </div>

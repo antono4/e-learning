@@ -8,9 +8,10 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public $teacher, $userSelect;
+    public $teacher, $teacher_lesson, $userSelect;
     public function mount($slug){
-        $this->teacher= User::whereId($slug)->first();
+        $this->teacher          = User::whereId($slug)->first();
+        $this->teacher_lesson   = Lesson::whereUserId($this->teacher->id)->first();
         $this->userSelect = $slug;
     }
 
@@ -22,6 +23,7 @@ class Show extends Component
         ])->extends('livewire.admin.master')->section('content');
     }
 
+    public $lesson;
     public function changeJob(){
         Lesson::find($this->lesson)->update([
             'user_id' => $this->userSelect

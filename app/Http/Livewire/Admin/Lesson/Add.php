@@ -27,9 +27,9 @@ class Add extends Component
         $this->validate();
 
         Lesson::create([
-            'name'      => $this->name,
-            'slug'      => Str::slug($this->name),
-            'status'    => 'not'
+            'name'          => $this->name,
+            'slug'          => Str::slug($this->name),
+            'status'        => 'not'
         ]);
 
         $this->name = null;
