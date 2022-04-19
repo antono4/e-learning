@@ -20,7 +20,7 @@ class ShowTeacher extends Component
     {
         return view('livewire.admin.show-teacher',[
             'teacher' => $this->teacher,
-            'lessons' => Lesson::all()
+            'lessons' => Lesson::orderBy('user_id', 'ASC')->get()
         ])->extends('livewire.admin.master')->section('content');
     }
 

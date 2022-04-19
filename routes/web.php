@@ -3,7 +3,10 @@
 use App\Http\Controllers\{ CheckRoleController, GiveRoleController };
 use App\Http\Livewire\Student\{ Dashboard as StudentDashboard, ShowLesson as StudentShowLesson };
 use App\Http\Livewire\Teacher\{ AddQuestion, Dashboard as TeacherDashboard, Lessons, ShowLesson};
-use App\Http\Livewire\Admin\{ Dashboard as AdminDashboard, ShowTeacher};
+use App\Http\Livewire\Admin\{AddLesson, Dashboard as AdminDashboard, Lessons as AdminLessons, ShowLesson as AdminShowLesson, ShowTeacher};
+use App\Http\Livewire\Admin\Lesson\{ Index as AdminLessonIndex, Add as AdminLessonAdd };
+use App\Http\Livewire\Admin\User\Student\{ Index as AdminStudentIndex};
+use App\Http\Livewire\Admin\User\Teacher\{ Index as AdminTeacherIndex};
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -50,10 +53,29 @@ Route::middleware(['role:teacher', 'auth'])->prefix('teacher')->group(function (
     Route::get('/addquestion', AddQuestion::class)->name('add.question');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', AdminDashboard::class)->name('admin.dashboard');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+    
+    // Admin Lesson = Mengelola data Pelajaran
+    Route::prefix('lessons')->name('lessons.')->group(function(){
+        Route::get('/', AdminLessonIndex::class)->name('index');
+        Route::get('/add', AdminLessonAdd::class)->name('add');
+        Route::get('/{slug}', AdminShowLesson::class)->name('show');
+    });
 
-    Route::get('/show-teacher/{slug}', ShowTeacher::class)->name('admin.teacher.show');
+    // Admin Teacher = Mengelola data Guru
+    Route::prefix('teachers')->name('teachers.')->group(function(){
+        Route::get('/', AdminTeacherIndex::class)->name('index');
+        // Route::get('/add-lesson', AddLesson::class)->name('add');
+        // Route::get('/{slug}', AdminShowLesson::class)->name('show');
+    });
+    
+    // Admin Lesson = Mengelola data Siswa
+    Route::prefix('students')->name('students.')->group(function(){
+        Route::get('/', AdminStudentIndex::class)->name('index');
+    });
+
+    Route::get('/show-teacher/{slug}', ShowTeacher::class)->name('teacher.show');
 });
 
 

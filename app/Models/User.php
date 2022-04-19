@@ -62,7 +62,7 @@ class User extends Authenticatable
     ];
 
     public function Lesson(){
-        return $this->belongsTo(Lesson::class);
+        return $this->hasMany(Lesson::class);
     }
 
     public function Score(){

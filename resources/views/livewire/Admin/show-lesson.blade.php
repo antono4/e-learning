@@ -1,8 +1,10 @@
 <div>
     <section class="section">
+
+        {{ $key }}
       
         @section('header')
-            <h1>Profile</h1>
+            <h1>{{ $lesson->name }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active">
                     <a href="#">Dashboard</a>
@@ -12,7 +14,7 @@
         @endsection
 
       <div class="section-body">
-        <h2 class="section-title">Hi, {{ $teacher->name }}!</h2>
+        <h2 class="section-title">Hi, !</h2>
         <p class="section-lead">
           Change information about yourself on this page.
         </p>
@@ -65,18 +67,13 @@
                   <h4>Edit Profile</h4>
                 </div>
                 <div class="card-body">
-                    {{ $lesson }}
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label>Default Select</label>
-                            <select class="form-control" wire:model="lesson">
+                            <select class="form-control">
                                 <option hidden selected>Pilih Pelajaran</option>
-                                @foreach ($lessons as $lesson)
-                                    <option value="{{ $lesson->id }}">
-                                      <b>{{ $lesson->name }}</b> 
-                                      &mdash;
-                                      {{ $lesson->user->name }}
-                                    </option>
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                                 @endforeach
                             </select>
                         </div>

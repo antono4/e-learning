@@ -7,30 +7,66 @@
             <a href="index.html">St</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li class="nav-item dropdown">
+            <li class="menu-header">Kelola Data</li>
+            <li 
+                class="
+                    nav-item dropdown
+                    @if (request()->is('admin/teachers*') OR request()->is('admin/students*'))
+                        active
+                    @endif
+            ">
                 <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-fire"></i>
-                    <span>Dashboard</span>
+                    <i class="fas fa-users"></i>
+                    <span>Kelola Pengguna</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="index-0.html">General Dashboard</a>
+                    <li 
+                        class="
+                        @if (request()->is('admin/teachers'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.teachers.index') }}">Data Guru</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="index.html">Ecommerce Dashboard</a>
+                    <li 
+                        class="
+                        @if (request()->is('admin/students'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.students.index') }}">Data Siswa</a>
                     </li>
                 </ul>
             </li>
             <li 
-                @if (request()->is('admin/dashboard'))
-                    class=" active"
-                @endif
-            >
-                <a class="nav-link" href="{{ route('teacher.dashboard') }}">
-                    <i class="far fa-square"></i> 
-                    <span>Daftar Guru</span>
+                class="
+                    nav-item dropdown
+                    @if (request()->is('admin/lessons*'))
+                        active
+                    @endif
+            ">
+                <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-book"></i>
+                    <span>Kelola Mapel</span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li 
+                        class="
+                        @if (request()->is('admin/lessons'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.lessons.index') }}">Data Mapel</a>
+                    </li>
+                    <li 
+                        class="
+                        @if (request()->is('admin/lessons/add'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.lessons.add') }}">Tambah Mapel</a>
+                    </li>
+                </ul>
             </li>
         </ul>
 
