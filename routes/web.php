@@ -57,7 +57,8 @@ Route::middleware(['role:teacher', 'auth'])->prefix('teacher')->group(function (
     Route::get('/addquestion', AddQuestion::class)->name('add.question');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
+// Admin Route Group
+Route::middleware(['role:admin', 'auth'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
     
