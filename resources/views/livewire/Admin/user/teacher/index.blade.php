@@ -37,7 +37,7 @@
                         </div>
                     </td>
                     <td>
-                        <a href="{{ route('admin.teacher.show', $teacher->id) }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.teachers.show', $teacher->id) }}" class="btn btn-secondary">
                           <i class="fas fa-cog"></i>
                         </div>
                     </td>

@@ -65,7 +65,6 @@
                   <h4>Edit Profile</h4>
                 </div>
                 <div class="card-body">
-                    {{ $lesson }}
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label>Default Select</label>
@@ -73,9 +72,7 @@
                                 <option hidden selected>Pilih Pelajaran</option>
                                 @foreach ($lessons as $lesson)
                                     <option value="{{ $lesson->id }}">
-                                      <b>{{ $lesson->name }}</b> 
-                                      &mdash;
-                                      {{ $lesson->user->name }}
+                                        {{ $lesson->name }}
                                     </option>
                                 @endforeach
                             </select>

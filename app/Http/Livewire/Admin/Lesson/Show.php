@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Lesson;
 
 use Livewire\Component;
 use App\Models\{ Lesson, User };
 
-class ShowLesson extends Component
+class Show extends Component
 {
     public $lesson, $key;
     public function mount($slug){
@@ -15,7 +15,7 @@ class ShowLesson extends Component
 
     public function render()
     {
-        return view('livewire.admin.show-lesson', [
+        return view('livewire.admin.lesson.show', [
             'lesson' => $this->lesson,
             'teachers' => User::all()
         ])->extends('livewire.admin.master')->section('content');

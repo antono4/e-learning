@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\User\Teacher;
 
 use App\Models\Lesson;
-use App\Models\Teacher;
+use App\Models\User;
 use Livewire\Component;
 
-class ShowTeacher extends Component
+class Show extends Component
 {
     public $teacher, $userSelect;
     public function mount($slug){
-        $this->teacher= Teacher::whereId($slug)->first();
+        $this->teacher= User::whereId($slug)->first();
         $this->userSelect = $slug;
     }
 
-
-    public $lesson;
     public function render()
     {
-        return view('livewire.admin.show-teacher',[
+        return view('livewire.admin.user.teacher.show',[
             'teacher' => $this->teacher,
-            'lessons' => Lesson::orderBy('user_id', 'ASC')->get()
+            'lessons' => Lesson::whereNull('user_id')->orderBy('user_id', 'ASC')->get()
         ])->extends('livewire.admin.master')->section('content');
     }
 

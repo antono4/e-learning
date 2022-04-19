@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Admin\User\Teacher;
+namespace App\Http\Livewire\Admin\User\Student;
 
 use Livewire\Component;
+use App\Models\Lesson;
 
-class AddTeacher extends Component
+class Add extends Component
 {
     public function render()
     {
-        return view('livewire.admin.user.teacher.add-teacher', [
+        return view('livewire.admin.user.student.add', [
             'lessons' => Lesson::whereUserId(null)->get()
         ])->extends('livewire.admin.master')->section('content');
     }

@@ -7,6 +7,17 @@
             <a href="index.html">St</a>
         </div>
         <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li 
+                @if (request()->is('admin/dashboard'))
+                    class=" active"
+                @endif
+            >
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <i class="fas fa-fire"></i> 
+                    <span>Dashboard</span>
+                </a>
+            </li>
             <li class="menu-header">Kelola Data</li>
             <li 
                 class="
@@ -22,7 +33,7 @@
                 <ul class="dropdown-menu">
                     <li 
                         class="
-                        @if (request()->is('admin/teachers'))
+                        @if (request()->is('admin/teachers*') AND !request()->is('admin/teachers/add'))
                             active
                         @endif
                     ">
@@ -35,6 +46,22 @@
                         @endif
                     ">
                         <a class="nav-link" href="{{ route('admin.students.index') }}">Data Siswa</a>
+                    </li>
+                    <li 
+                        class="
+                        @if (request()->is('admin/teachers/add'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.teachers.add') }}">Tambah Guru</a>
+                    </li>
+                    <li 
+                        class="
+                        @if (request()->is('admin/students/add'))
+                            active
+                        @endif
+                    ">
+                        <a class="nav-link" href="{{ route('admin.students.add') }}">Tambah Siswa</a>
                     </li>
                 </ul>
             </li>
@@ -52,7 +79,7 @@
                 <ul class="dropdown-menu">
                     <li 
                         class="
-                        @if (request()->is('admin/lessons'))
+                        @if (request()->is('admin/lessons*') AND !request()->is('admin/lessons/add'))
                             active
                         @endif
                     ">
