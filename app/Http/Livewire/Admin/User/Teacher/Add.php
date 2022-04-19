@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Admin\User\Teacher;
 
 use Livewire\Component;
-use App\Models\Lesson;
-use App\Models\User;
+use App\Models\{ Lesson, User };
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Add extends Component
 {
+    use LivewireAlert;
+
     public function render()
     {
         return view('livewire.admin.user.teacher.add', [
@@ -38,12 +40,14 @@ class Add extends Component
             $this->password         = null;
             $this->password_confirm = null;
 
+            $this->alert('success', 'Berhasil menambah akun guru');
+
         } else{
 
             $this->password         = null;
             $this->password_confirm = null;
 
-            return redirect()->back();
+            $this->alert('error', 'Password tidak terkonfirmasi');
         }
 
     }
