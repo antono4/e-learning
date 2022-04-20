@@ -2,16 +2,27 @@
 
 use App\Http\Controllers\{ CheckRoleController, GiveRoleController };
 use App\Http\Livewire\Student\{ Dashboard as StudentDashboard, ShowLesson as StudentShowLesson };
-use App\Http\Livewire\Teacher\{ AddQuestion, Dashboard as TeacherDashboard, Lessons, ShowLesson};
-use App\Http\Livewire\Admin\{AddLesson, Dashboard as AdminDashboard, Lessons as AdminLessons, ShowLesson as AdminShowLesson, ShowTeacher};
+use App\Http\Livewire\Teacher\{ Dashboard as TeacherDashboard };
+use App\Http\Livewire\Admin\{ Dashboard as AdminDashboard};
 
 use App\Http\Livewire\Admin\Lesson\{ 
-    Index as AdminLessonIndex, 
-    Add as AdminLessonAdd,
-    Show as AdminLessonShow
+    Index   as AdminLessonIndex, 
+    Add     as AdminLessonAdd,
+    Show    as AdminLessonShow
 };
-use App\Http\Livewire\Admin\User\Student\{ Index as AdminStudentIndex, Add as AdminStudentAdd};
-use App\Http\Livewire\Admin\User\Teacher\{ Index as AdminTeacherIndex, Show as AdminTeacherShow, Add as AdminTeacherAdd};
+
+use App\Http\Livewire\Admin\User\Student\{ 
+    Index   as AdminStudentIndex, 
+    Add     as AdminStudentAdd
+};
+
+use App\Http\Livewire\Admin\User\Teacher\{ 
+    Index   as AdminTeacherIndex, 
+    Show    as AdminTeacherShow, 
+    Add     as AdminTeacherAdd
+};
+use App\Http\Livewire\Teacher\Question\{ Add as TeacherQuestionAdd};
+use App\Http\Livewire\Teacher\Score\{ Index as TeacherScoreIndex };
 use App\Models\Lesson;
 use App\Models\Question;
 use Illuminate\Support\Facades\Route;
@@ -48,13 +59,10 @@ Route::middleware(['role:student', 'auth'])->prefix('student')->group(function (
 // teacher route group
 Route::middleware(['role:teacher', 'auth'])->prefix('teacher')->group(function () {
     Route::get('/dashboard', TeacherDashboard::class)->name('teacher.dashboard');
-    // teacher Lesson Group Route
-    Route::prefix('lessons')->name('lesson.')->group(function(){
-        Route::get('/', Lessons::class)->name('index');
-        Route::get('/{slug}', ShowLesson::class)->name('show');
-    });
 
-    Route::get('/addquestion', AddQuestion::class)->name('add.question');
+    Route::get('/scores', TeacherScoreIndex::class)->name('teacher.score.index');
+    
+    Route::get('/questions/add', TeacherQuestionAdd::class)->name('teacher.question.add');
 });
 
 // Admin Route Group

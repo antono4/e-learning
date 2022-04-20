@@ -8,47 +8,33 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-fire"></i>
-                    <span>Dashboard</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="nav-link" href="index-0.html">General Dashboard</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="index.html">Ecommerce Dashboard</a>
-                    </li>
-                </ul>
-            </li>
             <li 
                 @if (request()->is('teacher/dashboard'))
                     class=" active"
                 @endif
             >
                 <a class="nav-link" href="{{ route('teacher.dashboard') }}">
-                    <i class="far fa-square"></i> 
+                    <i class="fas fa-fire"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li 
+                @if (request()->is('teacher/scores'))
+                    class=" active"
+                @endif
+            >
+                <a class="nav-link" href="{{ route('teacher.score.index') }}">
+                    <i class="fas fa-address-book"></i>
                     <span>Daftar Nilai</span>
                 </a>
             </li>
             <li 
-                @if (request()->is('teacher/lessons'))
+                @if (request()->is('teacher/questions/add'))
                     class=" active"
                 @endif
             >
-                <a class="nav-link" href="{{ route('lesson.index') }}">
-                    <i class="far fa-square"></i> 
-                    <span>Daftar Pelajaran</span>
-                </a>
-            </li>
-            <li 
-                @if (request()->is('teacher/addquestion'))
-                    class=" active"
-                @endif
-            >
-                <a class="nav-link" href="{{ route('add.question') }}">
-                    <i class="far fa-square"></i> 
+                <a class="nav-link" href="{{ route('teacher.question.add') }}">
+                    <i class="fa-solid fa-paperclip"></i>    
                     <span>Tambah Soal</span>
                 </a>
             </li>
