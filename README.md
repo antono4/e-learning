@@ -17,7 +17,7 @@
 
 ## 📖 Tentang
 
-Repository **`e-learning`** adalah proyek PHP yang dibangun dengan HTML, CSS, SCSS, JavaScript, PHP.
+Repository **`e-learning`** adalah proyek multi-bagian (monorepo) yang dibangun dengan HTML, CSS, SCSS, JavaScript, PHP.
 GitHub Pages belum diaktifkan untuk repository ini.
 
 ## 🗂️ Struktur Proyek
@@ -123,13 +123,15 @@ Berdasarkan ekstensi berkas yang terdeteksi di repository:
 
 ## 🚀 Menjalankan Secara Lokal
 
-Butuh PHP dan Composer:
+Repo ini punya beberapa bagian (misalnya `backend/` dan `frontend/`);
+jalankan tiap bagian sesuai kebutuhan:
 
 ```bash
-composer install
-php spark serve
-# atau
-php -S localhost:8000 -t public
+# bagian Python
+cd backend && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+
+# bagian Node
+cd frontend && npm install && npm run dev
 ```
 
 ## 📬 Kontak
