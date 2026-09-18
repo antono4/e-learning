@@ -1,117 +1,37 @@
-<!-- README ini dihasilkan otomatis oleh .github/workflows/generate-readme.yml -->
-<!-- Jangan edit manual: perubahan akan ditimpa pada run berikutnya. -->
+<!-- README ini dihasilkan otomatis oleh workflow .github/workflows/generate-readme.yml -->
+<!-- Jangan edit manual; perubahan akan ditim pada run berikutnya. -->
 
-<h1 align="center">e-learning 👋</h1>
+<h1 align="center">Project 👋</h1>
 
 <p align="center">
-  <em>🌐 Web project - E Learning</em>
+  <strong></strong>
 </p>
 
 <p align="center">
   <a href="https://github.com/antono4/e-learning"><img alt="GitHub repo" src="https://img.shields.io/badge/GitHub-antono4/e-learning-blue?logo=github"></a>
-  <img alt="Files" src="https://img.shields.io/badge/Files-744-informational">
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/antono4/e-learning">
+  <a href="https://antono4.github.io/e-learning/"><img alt="Live Demo" src="https://img.shields.io/badge/Live%20Demo-Online-success?logo=githubpages"></a>
+  <img alt="Files" src="https://img.shields.io/badge/Files-747-informational">
+  <img alt="Updated" src="https://img.shields.io/badge/Updated-2026-09-18 08:41:40 WIB-lightgrey">
 </p>
 
 ---
 
 ## 📖 Tentang
 
-Repository **`e-learning`** adalah proyek multi-bagian (monorepo) yang dibangun dengan HTML, CSS, SCSS, JavaScript, PHP.
-GitHub Pages belum diaktifkan untuk repository ini.
+Repository **`e-learning`** adalah situs web pribadi / portofolio yang diterbitkan melalui **GitHub Pages**. Situs utama berada di [`https://antono4.github.io/e-learning/`](https://antono4.github.io/e-learning/).
 
 ## 🗂️ Struktur Proyek
 
 ```
 e-learning/
-.editorconfig
-.env.example
-.gitattributes
-.github/
-  workflows/
-.gitignore
-.styleci.yml
-LICENSE
-app/
-  Actions/
-  Console/
-  Exceptions/
-  Http/
-  Models/
-  Providers/
-  View/
-artisan
-bootstrap/
-  app.php
-  cache/
-composer.json
-composer.lock
-config/
-  app.php
-  auth.php
-  broadcasting.php
-  cache.php
-  cors.php
-  database.php
-  filesystems.php
-  fortify.php
-  hashing.php
-  jetstream.php
-  logging.php
-  mail.php
-  permission.php
-  queue.php
-  sanctum.php
-  services.php
-  session.php
-  view.php
-database/
-  .gitignore
-  factories/
-  migrations/
-  seeders/
-lang/
-  en/
-  en.json
-package-lock.json
-package.json
-phpunit.xml
-public/
-  .htaccess
-  css/
-  favicon.ico
-  img/
-  index.php
-  js/
-  mix-manifest.json
-  robots.txt
-  template/
-resources/
-  css/
-  js/
-  markdown/
-  views/
-routes/
-  api.php
-  channels.php
-  console.php
-  web.php
-storage/
-  app/
-  framework/
-  logs/
-tailwind.config.js
-tests/
-  CreatesApplication.php
-  Feature/
-  TestCase.php
-  Unit/
-webpack.mix.js
+├── index.html          # Halaman utama (landing / portofolio)
+├── assets/             # Aset statis (css, js, img, vendor)
+├── forms/               # Form handler (PHP)
 ```
 
 ## 🛠️ Teknologi
 
-Berdasarkan ekstensi berkas yang terdeteksi di repository:
+Berdasarkan isi repository, proyek ini menggunakan:
 
 - `HTML`
 - `CSS`
@@ -119,29 +39,30 @@ Berdasarkan ekstensi berkas yang terdeteksi di repository:
 - `JavaScript`
 - `PHP`
 
-> Total **744 berkas** di repository (di luar `.git`, `node_modules`, `dist`, dan `build`).
+> Total **747 file** terdeteksi di repository.
 
 ## 🚀 Menjalankan Secara Lokal
 
-Repo ini punya beberapa bagian (misalnya `backend/` dan `frontend/`);
-jalankan tiap bagian sesuai kebutuhan:
+Karena ini situs statis (HTML/CSS/JS/PHP), cukup buka `index.html` di browser, atau jalankan server lokal:
 
 ```bash
-# bagian Python
-cd backend && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+# Tanpa dependency
+python3 -m http.server 8000
+# lalu buka http://localhost:8000
 
-# bagian Node
-cd frontend && npm install && npm run dev
+# atau dengan PHP (untuk form handler di forms/)
+php -S localhost:8000
 ```
 
 ## 📬 Kontak
 
 - GitHub: [antono4](https://github.com/antono4)
+- Situs: [https://antono4.github.io/e-learning/](https://antono4.github.io/e-learning/)
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah MIT License — lihat berkas [`LICENSE`](./LICENSE).
+Lihat berkas [`LICENSE`](./LICENSE) untuk informasi lisensi.
 
 ---
 
-<sub>README ini di-generate otomatis oleh GitHub Actions `.github/workflows/generate-readme.yml`.</sub>
+<sub>README ini di-generate otomatis pada **2026-09-18 08:41:40 WIB** oleh GitHub Actions `.github/workflows/generate-readme.yml`.</sub>
